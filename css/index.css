@@ -1,0 +1,133 @@
+body {
+    margin: 0;
+    font-family: 'Josefin Sans', 'Montserrat', 'Rubik', 'Acme';
+    text-align: center;
+    width: 100%;
+    height: 100%;
+}
+body > div {
+    width: 100%;
+    height: 100vh;
+}
+
+#pres {
+    background-color: beige;
+}
+#scrol {
+    position: fixed;
+    width: 100px;
+    height: 50px;
+    margin-left: 90%;
+    margin-top: 20px;
+    font-size: 40px;
+    background-color: rgba(0, 0, 0, 0.315);
+    z-index: 100;
+}
+#items {
+    display: none;
+    position: absolute;
+    font-size: 30px;
+    background-color: transparent;
+    width: 100%;
+    top: 25vh;
+    height: 50vh;
+}
+#menu {
+    padding: 30px;
+    position: fixed;
+    width: 50px;
+    height: 50px;
+    z-index: 9;
+    overflow: hidden;
+}
+#mcont:hover {cursor: pointer}
+#mcont {
+    margin: 20px;
+    margin-left: 50px;
+    position: fixed;
+    width: 70px;
+    height: 80px;
+    z-index: 10;
+}
+
+ul {
+    list-style: none;
+    text-align:left;
+}
+li {
+    transition: 0.3s;
+    padding-top: 20px;
+    color: rgb(221, 221, 221);
+}
+li:hover {
+    cursor: pointer;
+    transition: 0.3s;
+    margin-left: 30px;
+    color: white;
+}
+.barra{
+    position: absolute;
+    background-color: rgb(22, 22, 22);
+    width: 4px;
+    height: 50px;
+    border-radius: 20px;
+    margin: 5px;
+}
+
+#menu > div:nth-child(1){margin-left: 10px}
+#menu > div:nth-child(2){margin-left: 25px}
+#menu > div:nth-child(3){margin-left: 40px}
+#menu > div:nth-child(4){margin-left: 55px}
+
+#yearEst {
+    position: relative;
+    display: flex;
+    top: 0;
+    width: 50%;
+    font-size: 10vh;
+    background: rgb(0, 145, 218);
+    color: white;
+    z-index: 1;
+}
+#contEst {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+#yearEst span {
+    transition: 0.3s;
+    position: absolute;
+    opacity: 0;
+    align-self: center;
+    width: 100%;
+    white-space: nowrap; 
+}
+
+#estudios {
+    position: relative;
+    left: 50%;
+    width: 50%;
+    font-size: 5vh;
+    height: 600%;
+    background-color: white;
+}
+
+#estudios p {
+    position: relative;
+    margin-left: 10%;
+    margin-right: 10%;
+    padding-top: 70vh;
+    align-self: center;
+    text-align: center;
+}
+
+#estudios p:first-child {margin-top: 30vh;}
+
+#tecno {
+    position: relative;
+    top: 110vh;
+    height: 100vh;
+    background-color: rgb(255, 149, 202);
+}
+
+
