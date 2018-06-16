@@ -2,6 +2,7 @@ var years;
 var estP; 
 var estY = [0, 1, 1, 2, 3];
 var date = new Date();
+var lastS = 0;
 
 window.onload = () => {
     years = document.querySelectorAll('#yearEst span');
@@ -9,6 +10,14 @@ window.onload = () => {
     years[years.length - 2].textContent = date.getFullYear();
     menuAnimation();
     easeScroll();
+
+    //Bolas 
+    var bolas = document.getElementsByClassName('ball');
+    setInterval(() => {
+        let rand = Math.floor(Math.random() * (bolas.length - 1));
+        for(let x of [...bolas])x.setAttribute('class', 'ball gray');
+        for(let x = 0; x < 6; x++)bolas[Math.floor(Math.random() * (bolas.length - 1))].setAttribute('class', 'ball');
+    }, 600)
 }
 
 function menuAnimation() {
@@ -73,7 +82,16 @@ window.addEventListener('scroll', () => {
         TweenLite.to(yearEst, 1, {height: '100vh', ease: Power4.easeOut});
     }
 
-
+    //Tecnologias
+    if((tecno.offsetTop + yearEst.offsetHeight) < window.scrollY) TweenLite.to(yearEst, .5, {height: '0vh', color: 'transparent', ease: Power4.easeOut});
+    if(tecno.offsetTop < window.scrollY && (tecno.offsetTop + 200) > window.scrollY  && window.scrollY < lastS){
+        TweenLite.to(yearEst, .5, {height: '20vh', color: 'white', ease: Power4.easeOut});
+    } 
+    
+    
+    
+    
+    lastS = window.scrollY;
 });
 
 function easeScroll() {

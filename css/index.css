@@ -126,8 +126,107 @@ li:hover {
 #tecno {
     position: relative;
     top: 110vh;
-    height: 100vh;
-    background-color: rgb(255, 149, 202);
+    height: 250vh;
 }
 
 
+.ball {
+    transition: .3s;
+    position: absolute;
+    margin-top: 40vh;
+    width: 10%;
+    height: 10%;
+    background-size: contain; 
+    background-repeat: no-repeat;
+}
+
+.gray {
+    filter: grayscale(100%);
+}
+.ball:hover {
+    transition: .3s;
+    filter: grayscale(0);
+}
+
+#bHtml {
+    background-image: url('../img/html5.png');
+    margin-left: 25%;
+}
+#bCss {
+    background-image: url('../img/css3.png');
+    margin-left: 55%;
+}
+#bJs {
+    background-image: url('../img/javascript.png');
+    margin-left: 40%;
+    margin-top: 50vh;
+}
+#bJava {
+    background-image: url('../img/java.png');
+    margin-left: 5%;
+}
+#bC {
+    background-image: url('../img/c.png');
+    margin-left: 5%;
+    margin-top: 85vh;
+}
+#bPython {
+    background-image: url('../img/python.png');
+    margin-left: 13%;
+    margin-top: 60vh;
+}
+#bPhp {
+    background-image: url('../img/php.png');
+    margin-left: 75%;
+    margin-top: 80vh;
+}
+#bMysql {
+    background-image: url('../img/mysql.png');
+    margin-left: 80%;
+    margin-top: 60vh;
+}
+#bMongoDB {
+    background-image: url('../img/mongodb.png');
+    margin-left: 45%;
+    margin-top: 80vh;
+}
+#bBs {
+    background-image: url('../img/bootstrap.png');
+    margin-left: 70%;
+}
+
+#bAngular {
+    background-image: url('../img/angular.png');
+    margin-left: 30%;
+    margin-top: 75vh;
+}
+
+#bGsap {
+    background-image: url('../img/gsap.png');
+    margin-left: 60%;
+    margin-top: 70vh;
+}
+
+#bJquery {
+    background-image: url('../img/jquery.png');
+    margin-left: 20%;
+    margin-top: 95vh;
+}
+#bD3{
+    background-image: url('../img/d3.png');
+    margin-left: 45%;
+    margin-top: 98vh;
+}
+#bSocketio {
+    background-image: url('../img/socketio.jpg');
+    margin-left: 65%;
+    margin-top: 105vh;
+}
+
+#bWordpress{
+    background-image: url('../img/wordpress.png');
+    margin-left: 85%;
+    width: 5%;
+    height: 5%;
+    margin-top: 95vh;
+}
