@@ -3,21 +3,31 @@ var estP;
 var estY = [0, 1, 1, 2, 3];
 var date = new Date();
 var lastS = 0;
+var fotos;
+var tl = new TimelineMax(); 
+var bars;
+var catC = 0;
+var engC = 0;
 
 window.onload = () => {
+    bars = document.querySelectorAll('#graficos > div > div:nth-child(2)');
+    fotos = document.querySelectorAll('#tecno *');
     years = document.querySelectorAll('#yearEst span');
     estP  = document.querySelectorAll('#estudios p');
     years[years.length - 2].textContent = date.getFullYear();
+
     menuAnimation();
     easeScroll();
 
     //Bolas 
     var bolas = document.getElementsByClassName('ball');
+
     setInterval(() => {
         let rand = Math.floor(Math.random() * (bolas.length - 1));
         for(let x of [...bolas])x.setAttribute('class', 'ball gray');
-        for(let x = 0; x < 6; x++)bolas[Math.floor(Math.random() * (bolas.length - 1))].setAttribute('class', 'ball');
+        for(let x = 0; x < 6; x++)bolas[Math.floor(Math.random() * (bolas.length - 1))].setAttribute('class', 'ball'); //Esto provoca epilepsia a las letras
     }, 600)
+
 }
 
 function menuAnimation() {
@@ -54,10 +64,8 @@ function menuAnimation() {
     })
 }
 
-
 window.addEventListener('scroll', () => {
     scrol.innerHTML = window.scrollY;
-
     for(let pF in estP){
         if(window.scrollY > estP[pF].offsetTop + pres.clientHeight) toggleOpacity(estY[pF]);
     }
@@ -84,13 +92,26 @@ window.addEventListener('scroll', () => {
 
     //Tecnologias
     if((tecno.offsetTop + yearEst.offsetHeight) < window.scrollY) TweenLite.to(yearEst, .5, {height: '0vh', color: 'transparent', ease: Power4.easeOut});
-    if(tecno.offsetTop < window.scrollY && (tecno.offsetTop + 200) > window.scrollY  && window.scrollY < lastS){
+    if(tecno.offsetTop < window.scrollY && (tecno.offsetTop + 300) > window.scrollY  && window.scrollY < lastS){
         TweenLite.to(yearEst, .5, {height: '20vh', color: 'white', ease: Power4.easeOut});
     } 
-    
-    
-    
-    
+
+    //Idiomas
+    if(idiblue.offsetTop - idiblue.offsetHeight < window.scrollY && lastS < window.scrollY){
+        TweenLite.to(idiblue, 3, {marginTop: '90vh', opacity: 1, ease: Power4.easeOut});
+        TweenLite.to(dWhite, 3, {marginTop: '100vh', ease: Power4.easeOut});
+    }
+
+    if(idiblue.offsetTop - idiblue.offsetHeight > window.scrollY && lastS > window.scrollY) {
+        TweenLite.to(idiblue, 3, {marginTop: '10vh', opacity: 0, ease: Power4.easeOut});
+        TweenLite.to(dWhite, 3, {marginTop: '20vh', ease: Power4.easeOut});
+    }
+
+    if(idiomas.offsetTop - idiblue.offsetHeight < window.scrollY){
+        TweenLite.to(catBar, 4, {top: 0, onUpdate: update100, ease: Power4.easeOut});
+        TweenLite.to(espBar, 4, {top: 0, ease: Power4.easeOut});
+        TweenLite.to(engBar, 4, {top: '30%', ease: Power4.easeOut});
+    }
     lastS = window.scrollY;
 });
 
@@ -335,4 +356,12 @@ function easeScroll() {
 function toggleOpacity(num) {
     for(let x of years) x.style.opacity = 0;
     years[num].style.opacity = 1;
+}
+
+function update100(){
+    if(catC < 100)catC++;
+    if(catC <= 70)engC++;
+    bars[0].innerHTML = `${catC}%`;
+    bars[1].innerHTML = `${catC}%`;
+    bars[2].innerHTML = `${engC}%`;
 }
