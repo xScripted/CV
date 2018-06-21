@@ -8,17 +8,20 @@ var tl = new TimelineMax();
 var bars;
 var catC = 0;
 var engC = 0;
+var subProj;
 
 window.onload = () => {
     bars = document.querySelectorAll('#graficos > div > div:nth-child(2)');
     fotos = document.querySelectorAll('#tecno *');
     years = document.querySelectorAll('#yearEst span');
     estP  = document.querySelectorAll('#estudios p');
-    years[years.length - 2].textContent = date.getFullYear();
+    trP  = document.querySelectorAll('#trabajos p');
+    subProj = document.querySelectorAll('#proyectos > *');
+    years[3].textContent = date.getFullYear();
 
     menuAnimation();
     easeScroll();
-
+    
     //Bolas 
     var bolas = document.getElementsByClassName('ball');
 
@@ -67,7 +70,11 @@ function menuAnimation() {
 window.addEventListener('scroll', () => {
     scrol.innerHTML = window.scrollY;
     for(let pF in estP){
-        if(window.scrollY > estP[pF].offsetTop + pres.clientHeight) toggleOpacity(estY[pF]);
+        if(window.scrollY > estP[pF].offsetTop + pres.clientHeight && window.scrollY < idiomas.offsetTop) toggleOpacity(estY[pF]);
+    }
+
+    for(let x = 5, p = 0; x < 9; x++, p++){        
+        if(window.scrollY > trabajos.offsetTop + trP[p].offsetTop && window.scrollY > idiomas.offsetTop) toggleOpacity(x);
     }
     //Fixed
     if(window.scrollY > pres.offsetHeight){
@@ -77,11 +84,11 @@ window.addEventListener('scroll', () => {
     }
 
     //TimeLine
-    if(window.scrollY > estudios.offsetHeight + estudios.offsetTop){
-        TweenLite.to(yearEst, 1, {width: '100%', backgroundColor:"blue", ease: Power4.easeOut});
-        toggleOpacity(years.length - 1);
+    if(window.scrollY > estudios.offsetHeight + estudios.offsetTop && window.scrollY < trabajos.offsetTop + idiblue.offsetHeight){
+        TweenLite.to(yearEst, 1, {width: '100%', ease: Power4.easeOut});
+        toggleOpacity(4);
     } else {
-        TweenLite.to(yearEst, 1, {width: '50%', backgroundColor:"rgb(0, 145, 218)", ease: Power4.easeOut});
+        TweenLite.to(yearEst, 1, {width: '50%', ease: Power4.easeOut});
     }
 
     if(window.scrollY > estudios.offsetHeight + estudios.offsetTop + pres.offsetHeight){
@@ -103,6 +110,8 @@ window.addEventListener('scroll', () => {
     }
 
     if(idiblue.offsetTop - idiblue.offsetHeight > window.scrollY && lastS > window.scrollY) {
+        years[4].textContent = "Tecnologías y lenguajes que domino";
+        yearEst.style.marginLeft = 0;
         TweenLite.to(idiblue, 3, {marginTop: '10vh', opacity: 0, ease: Power4.easeOut});
         TweenLite.to(dWhite, 3, {marginTop: '20vh', ease: Power4.easeOut});
     }
@@ -112,7 +121,22 @@ window.addEventListener('scroll', () => {
         TweenLite.to(espBar, 4, {top: 0, ease: Power4.easeOut});
         TweenLite.to(engBar, 4, {top: '30%', ease: Power4.easeOut});
     }
-    lastS = window.scrollY;
+
+    //Trabajos
+    if(trabajos.offsetTop <= window.scrollY){
+        years[4].textContent = "Experiencia laboral";
+        TweenLite.to(yearEst, 1, {marginLeft: 0, height: '20vh', color: 'white', ease: Power4.easeOut});        
+    }
+
+    if(trabajos.offsetTop + idiblue.offsetHeight < window.scrollY){
+        TweenLite.to(yearEst, 1, {marginLeft: '50%',width: '50%',height: '100vh', color: 'white', ease: Power4.easeOut});        
+    }
+
+    if(trabajos.offsetTop + trabajos.offsetHeight - (pres.offsetHeight) < window.scrollY){
+        TweenLite.to(yearEst, .2, {height: 0, color: 'transparent'});      
+    }
+
+    //Proyectos
 });
 
 function easeScroll() {
