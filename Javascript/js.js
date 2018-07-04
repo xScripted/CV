@@ -1,14 +1,9 @@
-var years;
-var estP; 
-var estY = [0, 1, 1, 2, 3];
-var date = new Date();
-var lastS = 0;
-var fotos;
-var tl = new TimelineMax(); 
-var bars;
-var catC = 0;
-var engC = 0;
-var subProj;
+var years, estP, fotos, bars, subProj, cX, cY, menuIt,
+    catC = 0, engC = 0, lastS = 0,
+    estY = [0, 1, 1, 2, 3],
+    tl = new TimelineMax(),
+    date = new Date();
+
 
 window.onload = () => {
     bars = document.querySelectorAll('#graficos > div > div:nth-child(2)');
@@ -17,9 +12,11 @@ window.onload = () => {
     estP  = document.querySelectorAll('#estudios p');
     trP  = document.querySelectorAll('#trabajos p');
     subProj = document.querySelectorAll('#proyectos > *');
+    menuIt = document.querySelectorAll('#items li');
     years[3].textContent = date.getFullYear();
 
     menuAnimation();
+    menuLinks();
     easeScroll();
     
     //Bolas 
@@ -30,6 +27,25 @@ window.onload = () => {
         for(let x of [...bolas])x.setAttribute('class', 'ball gray');
         for(let x = 0; x < 6; x++)bolas[Math.floor(Math.random() * (bolas.length - 1))].setAttribute('class', 'ball'); //Esto provoca epilepsia a las letras
     }, 600)
+
+
+    window.addEventListener('mousemove', () => {
+        cX = window.event.clientX;
+        cY = window.event.clientY;
+        let he = parseInt(window.getComputedStyle(pres).height);
+        let wi = parseInt(window.getComputedStyle(pres).width);
+
+        //Movimiento Background
+        if(cX > wi/4 && cX < wi/3)presbg.style.backgroundPositionX = -320 + 'px';
+        if(cX > wi/3 && cX < wi/2)presbg.style.backgroundPositionX = -280 + 'px';
+        if(cX > wi/2 && cX < wi/1.6)presbg.style.backgroundPositionX = -260 + 'px';
+        if(cX > wi/1.6 && cX < wi/1.2)presbg.style.backgroundPositionX = -240 + 'px';
+
+        if(cY > he/4 && cY < he/3)presbg.style.backgroundPositionY = -320 + 'px';
+        if(cY > he/3 && cY < he/2)presbg.style.backgroundPositionY = -280 + 'px';
+        if(cY > he/2 && cY < he/1.6)presbg.style.backgroundPositionY = -260 + 'px';
+        if(cY > he/1.6 && cY < he/1.2)presbg.style.backgroundPositionY = -240 + 'px';
+    })
 
 }
 
@@ -76,6 +92,7 @@ window.addEventListener('scroll', () => {
     for(let x = 5, p = 0; x < 9; x++, p++){        
         if(window.scrollY > trabajos.offsetTop + trP[p].offsetTop && window.scrollY > idiomas.offsetTop) toggleOpacity(x);
     }
+
     //Fixed
     if(window.scrollY > pres.offsetHeight){
         yearEst.style.position = 'fixed';
@@ -116,6 +133,7 @@ window.addEventListener('scroll', () => {
         TweenLite.to(dWhite, 3, {marginTop: '20vh', ease: Power4.easeOut});
     }
 
+        //Barras
     if(idiomas.offsetTop - idiblue.offsetHeight < window.scrollY){
         TweenLite.to(catBar, 4, {top: 0, onUpdate: update100, ease: Power4.easeOut});
         TweenLite.to(espBar, 4, {top: 0, ease: Power4.easeOut});
@@ -136,7 +154,7 @@ window.addEventListener('scroll', () => {
         TweenLite.to(yearEst, .2, {height: 0, color: 'transparent'});      
     }
 
-    //Proyectos
+    lastS = window.scrollY; //Direccion
 });
 
 function easeScroll() {
@@ -388,4 +406,9 @@ function update100(){
     bars[0].innerHTML = `${catC}%`;
     bars[1].innerHTML = `${catC}%`;
     bars[2].innerHTML = `${engC}%`;
+}
+
+function menuLinks() {
+    let scrollsTo = ['#pres', '#yearEst', '#tecno', '#idiblue', '#trabajos', '#proyectos', '#contactame'];
+    menuIt.forEach((e,i) => e.addEventListener('click', () => TweenLite.to(window, 2, {scrollTo: scrollsTo[i], ease: Power4.easeInOut})));
 }

@@ -7,6 +7,7 @@
     <link rel="stylesheet" type="text/css" href="css/index.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.1/TweenMax.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.1/plugins/ScrollToPlugin.min.js"></script>
     <script src="Javascript/js.js"></script>
 </head>
 <body>
@@ -29,7 +30,8 @@
             </ul>
         </div>
     </div>
-    <div id="pres" class="cara">Presentacion</div>
+    <div id="presbg" class="cara"></div>
+    <div id="pres" class="cara"><br><br>MIQUEL TORAN <br> CV WEB</div>
     <div id="yearEst">
         <span>2009 - 2013</span>
         <span>2013 - 2015</span>
@@ -42,9 +44,9 @@
         <span>2018</span>
     </div>
     <div id="estudios">
-        <p>Cursé los Estudios Secundarios Obligatorios en el Instituto Ventura Gassol</p>
-        <p>Al acabar me decanté por la Formación Profesional cursando el grado medio de Sistemas Microinformáticos y Redes</p>
-        <p>Paralelamente me saqué un pequeño curso de Cisco Networking Academy - Configuración y gestión de redes</p>
+        <p>Cursé los <b>Estudios Secundarios Obligatorios</b> en el Instituto Ventura Gassol</p>
+        <p>Al acabar me decanté por la Formación Profesional cursando el <b>Grado Medio de Sistemas Microinformáticos y Redes</b></p>
+        <p>Paralelamente me saqué un pequeño curso de <b>Cisco Networking Academy - Configuración y gestión de redes</b></p>
         <p>Como grado superior elegí <br><b>Desarrollo de Aplicaciones Web (DAW) </b></p>
         <p>Actualmente me sigo formando aprendiendo tecnologías nuevas de forma autodidacta</p>        
     </div>
@@ -89,33 +91,41 @@
         </div>
     </div>
     <div id='trabajos' class="cara">
-        <p>300 horas de prácticas en el Instituto La Pineda, realizando tareas de mantenimiento informático</p>
+        <p>300 horas de prácticas en el <b>Instituto La Pineda</b>, realizando tareas de mantenimiento informático</p>
         <a href='http://www.inslapineda.com/' target="_blank"><img src="img/lapineda.png"></img></a>
-        <p>9 meses en Alcambarcelona realizando tareas de mantenimiento informático </p>
+        <p>9 meses en <b>Alcambarcelona</b> realizando tareas de mantenimiento informático </p>
         <a href='http://alcamapartments.com/' target="_blank"><img src="img/alcam.png"></img></a>
-        <p>ERASMUS en Polonia <br> 217 horas en Funkciona Architekci realizando la web con Wordpress</p>
+        <p><b>ERASMUS en Polonia</b><br> 217 horas en <b>Funkciona Architekci</b>  realizando la web con Wordpress</p>
         <a href='http://funkciona.com/web/en/my-front-page/' target="_blank"><img src="img/funkciona.png"></img></a>      
-        <p>100 horas de prácticas en Afxsolutions haciendo y manteniendo webs en Wordpress</p>
+        <p>100 horas de prácticas en <b>Afxsolutions</b> haciendo y manteniendo webs en Wordpress</p>
         <a href='https://www.afxsolutions.com/' target="_blank"><img src="img/afx.png"></img></a>      
     </div>
     <div id="proyectos" class="cara">
         <h1>PROYECTOS REALIZADOS</h1>
-        <a href="http://systemgambit.esy.es/"><video id="v1" src="img/sg.mp4" autoplay loop>
+        <a href="http://systemgambit.esy.es/" target="_blank"><video id="v1" src="img/sg.mp4" data='false' autoplay loop>
             Tu navegador no implementa el elemento <code>video</code>.
         </video></a>
-        <p>Cuando acabé el Grado Medio, con hambre de poner en práctica lo que había aprendido hice una web sobre equipo de LoL para unos amigos</p>
-        <a href="http://www.vinilocopisteria.com/"><video id="v2"src="img/vinilo.mp4" autoplay loop>
+        <p data="false">Cuando acabé el Grado Medio, con hambre de poner en práctica lo que había aprendido hice una web sobre un equipo de eSports para unos amigos</p>
+        <a href="http://www.vinilocopisteria.com/" target="_blank"><video id="v2"src="img/vinilo.mp4" data='false' autoplay loop>
             Tu navegador no implementa el elemento <code>video</code>.
         </video></a>
-        <p>Durante las prácticas en Afxsolutions realicé esta web desde cero con Wordpress</p>
-        <a href="#"><video id="v3" src="img/chess.mp4" autoplay loop>
+        <p data="false">Durante las prácticas en Afxsolutions realicé esta web desde cero con Wordpress</p>
+        <a href="#"><video id="v3" src="img/v2.mp4" data='false' autoplay loop>
             Tu navegador no implementa el elemento <code>video</code>.
         </video></a>
-        <p>Como proyecto de final de curso hice un ajedrez online en 3D</p>
-        <a href="#"><video id="v4" src="img/japones.mp4" autoplay loop>
+        <p data="false">Como proyecto de final de curso hice un ajedrez online en 3D</p>
+        <a href="#"><video id="v4" src="img/japones.mp4" data='false' autoplay loop>
             Tu navegador no implementa el elemento <code>video</code>.
         </video></a>
-        <p>Despues de acabar DAW realicé una aplicación web para uso personal para aprender japones</p>
+        <p data="false">Después de acabar DAW realicé una aplicación web de uso personal para aprender japonés</p>
+        <p>Actualmente estoy buscando una oportunidad laboral que me permita desarrollarme como profesional, aprender todo lo posible y poder aportar mis aptitudes a una empresa que tenga objetivos ambiciosos y ganas de crecer</p>
+    </div>
+    <div id="contactame">
+        <div>Sientete libre de contactar conmigo</div>
+        <div>miqtoran@gmail.com</div><br>
+        <a href="https://www.infojobs.net/candidate/cv/view/index.xhtml?dgv=2199507908906417031"><img src="img/ij.png"></a>
+        <a><img src="img/linkedin.png"></a>
+        <a href="https://github.com/xScripted" target="_blank"><img src="img/github.png"></a>
     </div>
 </body>
 </html>
